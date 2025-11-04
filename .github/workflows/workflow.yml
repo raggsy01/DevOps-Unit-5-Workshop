@@ -2,15 +2,14 @@ name: Continuous Integration
 on: [push]                      # Will make the workflow run every time you push to any branch
  
 jobs:
-  build:
     dotnet:
-               name: Build test C#
-               runs-on: ubuntu-latest
-               steps:
-               - uses: actions/checkout@v4
+        name: Build test C#
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v4
               
-                # Setup .Net
-               - name: Setup .Net
-                 uses: actions/setup-dotnet@v4
-                 with:
-                              dotnet-version: '8.0.x'
+             # Setup .Net
+          - name: Setup .Net
+            uses: actions/setup-dotnet@v4
+            with:
+              dotnet-version: '8.0.x'

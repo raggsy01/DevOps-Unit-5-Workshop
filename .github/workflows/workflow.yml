@@ -1,15 +1,62 @@
+# Workflow
 name: Continuous Integration
-on: [push]                      # Will make the workflow run every time you push to any branch
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
  
 jobs:
-    dotnet:
-        name: Build test C#
-        runs-on: ubuntu-latest
-        steps:
-          - uses: actions/checkout@v4
-              
-             # Setup .Net
-          - name: Setup .Net
-            uses: actions/setup-dotnet@v4
-            with:
-              dotnet-version: '8.0.x'
+  dotnet:
+    name: Build and test C#
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+ 
+      # Setup .NET
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+ 
+      # Build C# code
+      - name: Build C# code
+        run: dotnet build
+ 
+      # Run C# tests
+      - name: Run C# tests
+        run: dotnet test
+ 
+  typescript:
+    name: Build and test TypeScript
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+ 
+      # Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+ 
+      # Install Node.js dependencies
+      - name: Install Node.js dependencies
+        run: npm ci
+        working-directory: ./DotnetTemplate.Web
+ 
+      # Build TypeScript code
+      - name: Build TypeScript code
+        run: npm run build
+        working-directory: ./DotnetTemplate.Web
+ 
+      # Run linter on TypeScript code
+      - name: Run TypeScript linter
+        run: npm run lint
+        working-directory: ./DotnetTemplate.Web
+ 
+      # Run TypeScript tests
+      - name: Run TypeScript tests
+        run: npm test
+        working-directory: ./DotnetTemplate.Web

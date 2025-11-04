@@ -8,5 +8,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4 # Adds a step to checkout the repository code
 
-    - name: Hello world.        # name of step
-      run: echo 'Hello world'
+    - name: Hello world.       # name of step
+      uses: actions/hello-world-javascript-actions@v1.1
+      with:
+        who-to-greet: 'Mona the Octocat'

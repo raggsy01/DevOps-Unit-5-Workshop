@@ -9,6 +9,6 @@ jobs:
     - uses: actions/checkout@v4 # Adds a step to checkout the repository code
 
     - name: Hello world.       # name of step
-      uses: actions/hello-world-javascript-actions@v1.1
+      uses: raggsy01/hello-world-javascript-actions@v1.1
       with:
         who-to-greet: 'Mona the Octocat'

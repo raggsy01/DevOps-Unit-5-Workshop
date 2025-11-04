@@ -8,5 +8,5 @@ jobs:
     steps:
     - uses: actions/checkout@v4 # Adds a step to checkout the repository code
 
-    - name: Hello world
-      run: 'Hello world'
+    - name: Hello world.        # name of step
+      run: echo 'Hello world'

@@ -3,20 +3,14 @@ on: [push]                      # Will make the workflow run every time you push
  
 jobs:
   build:
-    name: Build and test
-    runs-on: ubuntu-latest      # Sets the build environment a machine with the latest Ubuntu installed
-    steps:
-    - uses: actions/checkout@v4 # Adds a step to checkout the repository code
-    - name: Setup dotnet ${{ matrix.dotnet-version }}
-      uses: actions/setup-dotnet@v4
-      with:
-               dotnet-version: ${{ matrix.dotnet-version }}
-               
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm install
-    - run: npm run build --if-present
+    dotnet:
+               name: Build test C#
+               runs-on: ubuntu-latest
+               steps:
+               - uses: actions/checkout@v4
+              
+                # Setup .Net
+               -name: Setup .Net
+                 uses: actions/setup-dotnet@v4
+                 with:
+                              dotnet-version: '8.0.x'

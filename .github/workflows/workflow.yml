@@ -61,7 +61,7 @@ jobs:
         run: npm test
         working-directory: ./DotnetTemplate.Web
 
-    Notify:
+  Notify:
        name: Slack Notification
        runs-on: ubuntu-latest
        needs: [dotnet, typescript]

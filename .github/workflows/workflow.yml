@@ -10,7 +10,7 @@ on:
  
 jobs:
   dotnet:
-    name: Build and test C#
+    name: Build then test C#
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -30,7 +30,7 @@ jobs:
         run: dotnet test
  
   typescript:
-    name: Build and test TypeScript
+    name: Build then test TypeScript
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

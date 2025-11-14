@@ -56,7 +56,7 @@ jobs:
         run: npm run lint
         working-directory: ./DotnetTemplate.Web
 
-   Notify:
+  Notify:
      - name: Post a message in a channel
        uses: slackapi/slack-github-action@v2.1.1
        with:
